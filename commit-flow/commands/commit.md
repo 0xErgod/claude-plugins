@@ -1,11 +1,6 @@
 ---
-name: commit
 description: Create well-formatted conventional commits with pre-commit checks and intelligent commit splitting
-allowed-tools:
-  - Bash
-  - Read
-  - Glob
-  - Grep
+allowed-tools: Bash, Read, Glob, Grep
 ---
 
 # Commit Workflow
