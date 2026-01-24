@@ -1,0 +1,8 @@
+{
+  "name": "commit-flow",
+  "description": "Language-agnostic commit workflow with conventional commits, pre-commit checks, and intelligent commit splitting",
+  "version": "1.0.0",
+  "author": {
+    "name": "User"
+  }
+}
