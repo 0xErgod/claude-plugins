@@ -38,7 +38,17 @@ Unless `--no-verify` is specified, detect the project type and run appropriate c
 - If checks fail, report the failures and ask if user wants to proceed anyway or fix first
 - If no recognizable project type, skip to Step 2
 
-### Step 2: Analyze Git Status
+### Step 2: Analyze Repository Commit History
+
+Run `git log --oneline -20` to examine recent commits and understand:
+- **Message style** - How are descriptions phrased? What verb tense? What level of detail?
+- **Type usage** - Which conventional commit types does this repo use? Any custom conventions?
+- **Scope patterns** - Does the repo use scopes like `feat(auth):`? What format?
+- **Body conventions** - How detailed are commit bodies? What information is included?
+
+**IMPORTANT:** Your commits MUST match the existing patterns in the repository to maintain continuity. If the repo uses lowercase descriptions, use lowercase. If commits are terse, be terse. Mirror the established style.
+
+### Step 3: Analyze Git Status
 
 Run `git status` to check:
 - Which files are staged
@@ -47,7 +57,7 @@ Run `git status` to check:
 
 If no files are staged, automatically stage all modified files with `git add -u`. Do NOT automatically add untracked files without asking.
 
-### Step 3: Generate Diff and Analyze Changes
+### Step 4: Generate Diff and Analyze Changes
 
 Run `git diff --cached` to see what will be committed.
 
@@ -56,21 +66,41 @@ Analyze the diff to identify:
 2. **Different change types** - Features, fixes, refactoring, docs, tests, chores
 3. **Unrelated file groups** - Changes to unrelated parts of the codebase
 
-### Step 4: Decide on Single vs Multiple Commits
+### Step 5: Actively Evaluate Commit Splitting
 
-**Split commits when:**
+**DEFAULT BEHAVIOR: Look for ways to split.** Don't default to a single commit - actively analyze whether changes should be separated.
+
+**Ask yourself these questions:**
+1. Are there changes to multiple unrelated files or subsystems?
+2. Could someone reviewing this say "this commit does two things"?
+3. Are there formatting/style changes mixed with functional changes?
+4. Are there bug fixes mixed with new features?
+5. Are there refactors that could stand alone from new functionality?
+6. Are there test files that test different features?
+7. Are there documentation updates for different topics?
+
+**If ANY answer is yes, split the commits.**
+
+**Split commits when (actively look for these):**
 - Changes mix different concerns (e.g., feature + unrelated fix)
-- Changes touch unrelated subsystems
+- Changes touch unrelated subsystems or directories
 - Changes include both source code and documentation updates for different features
 - A refactor is mixed with new functionality
 - Test additions are for different features
+- Style/formatting changes are mixed with logic changes
+- Configuration changes are unrelated to code changes
+- Multiple independent bug fixes exist
 
-**Keep as single commit when:**
-- All changes serve one logical purpose
-- Changes are tightly coupled (e.g., feature + its tests + its docs)
-- Changes are small and cohesive
+**Keep as single commit ONLY when:**
+- All changes serve ONE clear logical purpose
+- Changes are tightly coupled (e.g., a feature + its direct tests + its direct docs)
+- Changes are small AND cohesive
+- Splitting would make commits less meaningful
 
-### Step 5: Create Commit(s)
+**When splitting, tell the user:**
+"I'm splitting these changes into X commits because [reason]. The commits will be: 1) ... 2) ... 3) ..."
+
+### Step 6: Create Commit(s)
 
 For each commit:
 
@@ -102,16 +132,58 @@ For each commit:
 - First line under 72 characters
 - Use present tense, imperative mood ("add" not "added")
 - Body explains what and why (not how)
+- Match the style/formatting of existing commits in the repo (from Step 2 analysis)
 - NO emojis anywhere
-- ALWAYS end with `[agent commit]` signature on its own line
-- NO `Co-Authored-By` lines
-- NO "Generated with Claude Code" text
 
-### Step 6: Verify
+**CRITICAL - Signature Format:**
+The commit message MUST end with EXACTLY `[agent commit]` on its own line. Nothing else.
+- NO `Co-Authored-By:` lines (NEVER, EVER)
+- NO `Co-Authored By:` variations
+- NO "Generated with Claude Code" text
+- NO other signatures, attributions, or footers
+- ONLY `[agent commit]` as the final line
+
+**Correct format:**
+```
+feat: add user auth
+
+Implement JWT authentication.
+
+[agent commit]
+```
+
+**WRONG formats (NEVER do these):**
+```
+feat: add user auth
+
+[agent commit]
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+```
+```
+feat: add user auth
+
+[agent commit]
+Co-Authored-By: ...
+```
+```
+feat: add user auth
+
+Co-Authored-By: ...
+
+[agent commit]
+```
+
+### Step 7: Verify
 
 After committing, run `git log -1 --stat` to show the commit that was created.
 
 If multiple commits were made, run `git log -<n> --oneline` where n is the number of commits created.
+
+**Verify the commit message format is correct** - check that:
+1. The signature is ONLY `[agent commit]` with nothing after it
+2. No Co-Authored-By or other attributions snuck in
+3. The message style matches the repository's existing commits
 
 ## Example Output
 
@@ -151,9 +223,13 @@ test: add unit tests for email validation
 
 ## Important Reminders
 
+- **ANALYZE COMMIT HISTORY FIRST** - Always check recent commits to match the repo's style
+- **ACTIVELY SPLIT COMMITS** - Default to splitting; only keep single commit if truly atomic
 - NEVER use emojis in commit messages
-- ALWAYS sign with `[agent commit]` as the final line
-- NEVER include Co-Authored-By or Generated with Claude Code
+- **SIGNATURE IS STRICTLY `[agent commit]`** - This is the ONLY signature. Nothing before, nothing after.
+- **ABSOLUTELY NO Co-Authored-By** - Never add `Co-Authored-By:`, `Co-authored-by:`, or any variation. Not before the signature, not after, not anywhere.
+- **NO "Generated with Claude Code"** - Never add this text
 - When splitting, explain to the user what commits you're creating before making them
 - If pre-commit checks fail, always ask before proceeding
 - Prefer atomic, focused commits over large mixed commits
+- Match the existing commit message style in the repository
