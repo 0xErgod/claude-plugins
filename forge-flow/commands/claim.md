@@ -13,6 +13,16 @@ Arguments provided: $ARGUMENTS
 
 This command requires the `gitx-mcp` MCP server configured with server name `gitx`. The first argument should be an issue number.
 
+## Forge Content Formatting Rules
+
+**CRITICAL — These rules apply to ALL text passed to MCP tools (issue_comment_create body):**
+
+### Newlines
+You MUST use actual newlines in strings passed to MCP tools, NEVER escaped `\n` characters. The API receives the string exactly as you pass it. Literal `\n` will render as visible text, not line breaks.
+
+### Agent Signature
+Every issue comment MUST end with `[agent comment]` on its own line. Nothing after it.
+
 ## Workflow
 
 ### Step 1: Parse Arguments
@@ -73,6 +83,8 @@ Construct the branch name from the issue:
 **Work started** on branch `<branch-name>`
 
 Claimed by @<username> via forge-flow.
+
+[agent comment]
 ```
 
 ### Step 6: Create Branch and Checkout

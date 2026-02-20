@@ -13,6 +13,16 @@ Arguments provided: $ARGUMENTS
 
 This command requires the `gitx-mcp` MCP server configured with server name `gitx`. The first argument should be a PR number.
 
+## Forge Content Formatting Rules
+
+**CRITICAL — These rules apply to ALL text passed to MCP tools (pr_review_create body):**
+
+### Newlines
+You MUST use actual newlines in strings passed to MCP tools, NEVER escaped `\n` characters. The API receives the string exactly as you pass it. Literal `\n` will render as visible text, not line breaks.
+
+### Agent Signature
+Every review body MUST end with `[agent review]` on its own line. Nothing after it.
+
 ## Workflow
 
 ### Step 1: Parse Arguments
@@ -137,6 +147,8 @@ Call `pr_review_create` with:
 ### Summary
 
 <1-3 sentences: overall assessment and what to do next>
+
+[agent review]
 ```
 
 ### Step 9: Report Locally
@@ -168,3 +180,5 @@ Review submitted for PR #<N>: <verdict>
 - Be fair: if a PR explicitly says "Addresses" (not "Closes"), unmet requirements are acceptable IF they're acknowledged
 - Never fabricate evidence — if you can't find where a requirement is met in the diff, say so
 - Read the FULL diff before forming an opinion, not just file names
+- ALL text sent to MCP tools MUST use real newlines, NEVER escaped `\n`
+- ALWAYS end review bodies with `[agent review]` as the final line

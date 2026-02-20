@@ -13,6 +13,39 @@ Arguments provided: $ARGUMENTS
 
 This command requires the `gitx-mcp` MCP server configured with server name `gitx`. You should be on a feature branch with commits ahead of the base branch.
 
+## Forge Content Formatting Rules
+
+**CRITICAL — These rules apply to ALL text passed to MCP tools (pr_create body, issue_comment_create body):**
+
+### Newlines
+You MUST use actual newlines in strings passed to MCP tools, NEVER escaped `\n` characters. The API receives the string exactly as you pass it. Literal `\n` will render as visible text, not line breaks.
+
+**WRONG:** `"## Summary\n\nThis PR adds..."` — renders as raw `\n` text on the forge
+**RIGHT:** Pass a proper multi-line string with real line breaks between lines.
+
+### Template Detection
+Before composing the PR body, check if the repository has a PR template:
+
+1. Look for these files (in order): `.gitea/PULL_REQUEST_TEMPLATE.md`, `.github/PULL_REQUEST_TEMPLATE.md`, `.github/pull_request_template.md`, `PULL_REQUEST_TEMPLATE.md`
+2. Use Glob to search: `**/*PULL_REQUEST_TEMPLATE*`
+3. If a template is found, read it and follow its structure — fill in each section from the template
+4. If NO template is found, use the default format defined in Step 5 below
+
+### Agent Signature
+Every PR body MUST end with the following signature on its own line:
+
+```
+[agent PR]
+```
+
+Every issue comment MUST end with:
+
+```
+[agent comment]
+```
+
+These signatures MUST be the LAST line. Nothing after them.
+
 ## Workflow
 
 ### Step 1: Validate Current State
@@ -76,6 +109,8 @@ Based on Issue #<N>: "<issue-title>":
 ## Testing
 
 <What testing was done or what tests were added>
+
+[agent PR]
 ```
 
 **Linking keywords:**
@@ -107,6 +142,8 @@ Call `issue_comment_create` on the linked issue:
 
 Branch `<branch-name>` → `<base-branch>`
 Commits: <N> | Files changed: <M>
+
+[agent comment]
 ```
 
 ### Step 8: Report
@@ -141,3 +178,5 @@ PR #<N> created: <title>
 - If push fails (e.g., no remote access), report the error and stop
 - Always verify the PR was created successfully by checking the response
 - The requirements checklist is key — it's what makes the review step effective. Map every requirement from the issue to a checkbox.
+- ALL text sent to MCP tools MUST use real newlines, NEVER escaped `\n` — this is the #1 cause of broken formatting on the forge
+- ALWAYS end PR bodies with `[agent PR]` and issue comments with `[agent comment]` as the final line

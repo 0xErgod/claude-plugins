@@ -13,6 +13,16 @@ Arguments provided: $ARGUMENTS
 
 This command requires the `gitx-mcp` MCP server configured with server name `gitx`. The first argument should be a PR number.
 
+## Forge Content Formatting Rules
+
+**CRITICAL — These rules apply to ALL text passed to MCP tools (issue_comment_create body):**
+
+### Newlines
+You MUST use actual newlines in strings passed to MCP tools, NEVER escaped `\n` characters. The API receives the string exactly as you pass it. Literal `\n` will render as visible text, not line breaks.
+
+### Agent Signature
+Every issue comment MUST end with `[agent comment]` on its own line. Nothing after it.
+
 ## Workflow
 
 ### Step 1: Parse Arguments
@@ -91,6 +101,8 @@ If merge fails:
      **PR merged:** #<pr-number> was merged into `<base>`.
 
      This PR partially addresses this issue. Remaining work may still be needed.
+
+     [agent comment]
      ```
 
 ### Step 6: Update Milestone (if applicable)
