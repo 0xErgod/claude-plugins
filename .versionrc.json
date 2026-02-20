@@ -3,15 +3,23 @@
     {
       "filename": "commit-flow/.claude-plugin/plugin.json",
       "type": "json"
+    },
+    {
+      "filename": "forge-flow/.claude-plugin/plugin.json",
+      "type": "json"
     }
   ],
   "packageFiles": [
     {
       "filename": "commit-flow/.claude-plugin/plugin.json",
       "type": "json"
+    },
+    {
+      "filename": "forge-flow/.claude-plugin/plugin.json",
+      "type": "json"
     }
   ],
-  "tagPrefix": "commit-flow/v",
+  "tagPrefix": "forge-flow/v",
   "scripts": {
     "postchangelog": "echo 'Changelog updated'"
   },

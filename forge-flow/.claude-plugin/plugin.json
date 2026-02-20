@@ -1,0 +1,13 @@
+{
+  "name": "forge-flow",
+  "description": "Issue-driven collaborative development for Gitea/Forgejo forges — triage, claim, submit, review, and merge through issues and PRs",
+  "version": "0.1.0",
+  "author": {
+    "name": "abderraouf-belalia"
+  },
+  "mcp": {
+    "requires": "gitx-mcp",
+    "server_name": "gitx",
+    "note": "Requires 0xErgod/gitx-mcp configured with GITEA_URL and GITEA_TOKEN"
+  }
+}
