@@ -19,7 +19,7 @@
       "type": "json"
     }
   ],
-  "tagPrefix": "forge-flow/v",
+  "tagPrefix": "v",
   "scripts": {
     "postchangelog": "echo 'Changelog updated'"
   },
