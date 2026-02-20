@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.2.0](https://github.com/abderraouf-belalia/claude-plugins/compare/v1.1.0...v1.2.0) (2026-02-20)
+
+
+### Features
+
+* add forge-context skill and lifecycle hooks ([f330253](https://github.com/abderraouf-belalia/claude-plugins/commit/f330253d387b245fbd1b9f6db57836e678555d69))
+* add forge-flow commands for issue-driven development workflow ([a0dccf7](https://github.com/abderraouf-belalia/claude-plugins/commit/a0dccf75e7f3fff16665caa0f1b3e2874ddbdd6b))
+* add forge-flow plugin scaffold and marketplace registration ([e2c9de4](https://github.com/abderraouf-belalia/claude-plugins/commit/e2c9de4417ec8849c4f10d4ab1d9a8afb1e1a9f2))
+
 ## 1.1.0 (2026-01-25)
 
 
