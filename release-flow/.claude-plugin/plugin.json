@@ -1,0 +1,8 @@
+{
+  "name": "release-flow",
+  "description": "Semantic versioning and changelog automation powered by git-cliff — bump, tag, and release for any language",
+  "version": "1.0.0",
+  "author": {
+    "name": "abderraouf-belalia"
+  }
+}

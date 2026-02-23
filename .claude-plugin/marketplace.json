@@ -14,6 +14,11 @@
       "name": "forge-flow",
       "source": "./forge-flow",
       "description": "Issue-driven collaborative development for Gitea/Forgejo forges — triage, claim, submit, review, and merge through issues and PRs"
+    },
+    {
+      "name": "release-flow",
+      "source": "./release-flow",
+      "description": "Semantic versioning and changelog automation powered by git-cliff — bump, tag, and release for any language"
     }
   ]
 }
