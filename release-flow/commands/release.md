@@ -99,8 +99,8 @@ Auto-detected bump: <major/minor/patch>
 ```
 
 **Bump level detection:**
-- If any commit has a `BREAKING CHANGE` footer or `!` after the type → **major**
-- If any `feat` commits → **minor**
+- If any commit has a BREAKING CHANGE footer or a bang (!) after the type → **major**
+- If any feat commits → **minor**
 - Otherwise → **patch**
 
 If an explicit `--major`, `--minor`, or `--patch` flag was provided, report: "Override: using `<level>` bump (auto-detected was `<auto-level>`)"
