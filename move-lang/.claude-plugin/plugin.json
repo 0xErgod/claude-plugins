@@ -1,0 +1,8 @@
+{
+  "name": "move-lang",
+  "description": "Move language support — LSP diagnostics, completions, and go-to-definition via move-analyzer",
+  "version": "0.1.0",
+  "author": {
+    "name": "abderraouf-belalia"
+  }
+}
