@@ -19,6 +19,11 @@
       "name": "release-flow",
       "source": "./release-flow",
       "description": "Semantic versioning and changelog automation powered by git-cliff — bump, tag, and release for any language"
+    },
+    {
+      "name": "move-lang",
+      "source": "./move-lang",
+      "description": "Move language support — LSP diagnostics, completions, and go-to-definition via move-analyzer"
     }
   ]
 }
