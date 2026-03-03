@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2026-03-03
+
+### Bug Fixes
+
+- Remove inline backticks that bash interprets as command substitution
+
+### Chores
+
+- Register move-lang plugin in marketplace
+
+### Features
+
+- Add move-lang plugin with move-analyzer LSP support
+- Add move-context passive skill for up-to-date SUI/Move docs
+
 ## [1.3.0] - 2026-02-24
 
 ### Bug Fixes
@@ -13,6 +28,7 @@ All notable changes to this project will be documented in this file.
 ### Chores
 
 - Add cliff.toml for git-cliff changelog generation
+- *(release)* 1.3.0
 
 ### Documentation
 
