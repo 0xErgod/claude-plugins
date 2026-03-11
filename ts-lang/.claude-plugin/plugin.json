@@ -1,0 +1,8 @@
+{
+  "name": "ts-lang",
+  "description": "TypeScript language support — bulk JSDoc/TSDoc comment generation and inline doc conventions",
+  "version": "0.1.0",
+  "author": {
+    "name": "abderraouf-belalia"
+  }
+}

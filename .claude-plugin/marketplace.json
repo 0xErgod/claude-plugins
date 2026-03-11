@@ -23,7 +23,17 @@
     {
       "name": "move-lang",
       "source": "./move-lang",
-      "description": "Move language support — LSP diagnostics, completions, and go-to-definition via move-analyzer"
+      "description": "Move language support — LSP diagnostics, completions, go-to-definition via move-analyzer, and documentation generation"
+    },
+    {
+      "name": "rust-lang",
+      "source": "./rust-lang",
+      "description": "Rust language support — bulk /// and //! doc comment generation and inline doc conventions"
+    },
+    {
+      "name": "ts-lang",
+      "source": "./ts-lang",
+      "description": "TypeScript language support — bulk JSDoc/TSDoc comment generation and inline doc conventions"
     }
   ]
 }
