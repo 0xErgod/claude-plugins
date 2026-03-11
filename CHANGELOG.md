@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.0] - 2026-03-11
+
+### Features
+
+- Add doc comment generation skills to move-lang plugin
+- Add rust-lang plugin with doc comment generation
+- Add ts-lang plugin with JSDoc/TSDoc comment generation
+
 ## [1.4.0] - 2026-03-03
 
 ### Bug Fixes
@@ -11,6 +19,7 @@ All notable changes to this project will be documented in this file.
 ### Chores
 
 - Register move-lang plugin in marketplace
+- *(release)* 1.4.0
 
 ### Features
 
